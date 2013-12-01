@@ -54,6 +54,20 @@ config BR2_TARGET_ROOTFS_EXT2_RESBLKS
 	int "reserved blocks percentage"
 	default 0
 
+config BR2_TARGET_ROOTFS_EXT2_UBOOT
+        bool "uboot filesystem image"
+	default false
+	depends on BR2_arm || BR2_armeb
+	depends on BR2_TARGET_UBOOT
+	help
+	  This creates a uboot header to the ramdisk image
+
+config BR2_TARGET_ROOTFS_EXT2_LOADADDR
+        string "ramdisk loadaddress"
+	depends on BR2_TARGET_ROOTFS_EXT2_UBOOT
+	help
+	  This is the address the header will be loaded at
+
 choice
 	prompt "Compression method"
 	default BR2_TARGET_ROOTFS_EXT2_NONE
