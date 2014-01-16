@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Buildroot 2013.11-00006-g9b40549 Configuration
+# Buildroot 2013.11-00007-g42aa5a8 Configuration
 #
 BR2_HAVE_DOT_CONFIG=y
 
@@ -1330,8 +1330,8 @@ BR2_TARGET_UBOOT_BOARDNAME="zynq_microzed"
 BR2_TARGET_UBOOT_CUSTOM_GIT=y
 # BR2_TARGET_UBOOT_CUSTOM_HG is not set
 BR2_TARGET_UBOOT_CUSTOM_REPO_URL="https://github.com/vxmdesign/u-boot-xlnx.git"
-BR2_TARGET_UBOOT_CUSTOM_REPO_VERSION="vxm-uboot-v1.0"
-BR2_TARGET_UBOOT_VERSION="vxm-uboot-v1.0"
+BR2_TARGET_UBOOT_CUSTOM_REPO_VERSION="vxm-uboot-v1.1"
+BR2_TARGET_UBOOT_VERSION="vxm-uboot-v1.1"
 BR2_TARGET_UBOOT_CUSTOM_PATCH_DIR=""
 # BR2_TARGET_UBOOT_FORMAT_AIS is not set
 # BR2_TARGET_UBOOT_FORMAT_BIN is not set
