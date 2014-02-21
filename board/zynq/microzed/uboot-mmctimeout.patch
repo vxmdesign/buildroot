@@ -1,0 +1,13 @@
+diff --git a/drivers/mmc/sdhci.c b/drivers/mmc/sdhci.c
+index 33d4933..9b8eee5 100644
+--- a/drivers/mmc/sdhci.c
++++ b/drivers/mmc/sdhci.c
+@@ -121,7 +121,7 @@ int sdhci_send_command(struct mmc *mmc, struct mmc_cmd *cmd,
+ 	unsigned int retry = 10000;
+ 
+ 	/* Wait max 10 ms */
+-	timeout = 100;
++	timeout = 1000;
+ 
+ 	sdhci_writel(host, SDHCI_INT_ALL_MASK, SDHCI_INT_STATUS);
+ 	mask = SDHCI_CMD_INHIBIT | SDHCI_DATA_INHIBIT;

@@ -1,0 +1,18 @@
+diff --git a/drivers/mmc/host/sdhci-of-xilinxps.c b/drivers/mmc/host/sdhci-of-xilinxps.c
+index f79e0db..377b5d8 100644
+--- a/drivers/mmc/host/sdhci-of-xilinxps.c
++++ b/drivers/mmc/host/sdhci-of-xilinxps.c
+@@ -44,9 +44,12 @@ static unsigned int zynq_of_get_max_clock(struct sdhci_host *host)
+ 
+ 	return pltfm_host->clock;
+ }
+-
++static unsigned int zynq_of_get_ro(struct sdhci_host *host){
++  return 0;
++}
+ static struct sdhci_ops sdhci_zynq_ops = {
+ 	.get_max_clock = zynq_of_get_max_clock,
++	.get_ro = zynq_of_get_ro,
+ };
+ 
+ static struct sdhci_pltfm_data sdhci_zynq_pdata = {
