@@ -81,11 +81,13 @@
 		device_type = "memory";
 		reg = < 0x0 0x40000000 >;
 	} ;
+
 	ps7_axi_interconnect_0: amba@0 {
 		#address-cells = <1>;
 		#size-cells = <1>;
 		compatible = "xlnx,ps7-axi-interconnect-1.00.a", "simple-bus";
 		ranges ;
+
 		ps7_afi_0: ps7-afi@f8008000 {
 			compatible = "xlnx,ps7-afi-1.00.a";
 			reg = < 0xf8008000 0x1000 >;
@@ -111,7 +113,7 @@
 			compatible = "xlnx,ps7-dev-cfg-1.00.a";
 			interrupt-parent = <&ps7_scugic_0>;
 			interrupts = < 0 8 4 >;
-			reg = < 0xf8007000 0x1000 >;
+			reg = < 0xf8007000 0x80 >;
 		} ;
 		ps7_dma_s: ps7-dma@f8003000 {
 			#dma-cells = <1>;
@@ -262,7 +264,6 @@
 			reg = < 0xe0100000 0x1000 >;
 			xlnx,has-cd = <0x1>;
 			xlnx,has-power = <0x0>;
-			xlnx,has-wp = <0x1>;
 			xlnx,sdio-clk-freq-hz = <0x3f93e10>;
 		} ;
 		ps7_slcr_0: ps7-slcr@f8000000 {
@@ -335,5 +336,43 @@
 			interrupts = < 0 7 4 >;
 			reg = < 0xf8007100 0x20 >;
 		} ;
+		uio0: generic-hdl@43C00000 {
+			compatible = "generic-uio";
+			reg = <0x43C00000 0x20000>;
+			interrupts = <0 55 1>;
+			interrupt-parent = <&ps7_scugic_0>;
+		};
+		uart0: uartlite@42c00000 { 
+		       compatible = "xlnx,xps-uartlite-1.00.a";
+		       reg = <0x42c00000 0x1000>;
+		       clock = <100000000>;
+		       interrupts = <0 56 1>;
+		       interrupt-parent = <&ps7_scugic_0>;
+		       port-number = <0>;
+		};
+		uart1: uartlite@42c10000 { 
+		       compatible = "xlnx,xps-uartlite-1.00.a";
+		       reg = <0x42c10000 0x1000>;
+		       clock = <100000000>;
+		       interrupts = <0 57 1>;
+		       interrupt-parent = <&ps7_scugic_0>;
+		       port-number = <1>;
+		};
+		uart2: uartlite@42c20000 { 
+		       compatible = "xlnx,xps-uartlite-1.00.a";
+		       reg = <0x42c20000 0x1000>;
+		       clock = <100000000>;
+		       interrupts = <0 58 1>;
+		       interrupt-parent = <&ps7_scugic_0>;
+		       port-number = <2>;
+		};
+		uart3: uartlite@42c30000 { 
+		       compatible ="xlnx,xps-uartlite-1.00.a";
+		       reg = <0x42c30000 0x1000>;
+		       clock = <100000000>;
+		       interrupts = <0 59 1>;
+		       interrupt-parent = <&ps7_scugic_0>;
+		       port-number = <3>;
+		};
 	} ;
 } ;
