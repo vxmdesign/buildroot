@@ -16,3 +16,30 @@ index f79e0db..377b5d8 100644
  };
  
  static struct sdhci_pltfm_data sdhci_zynq_pdata = {
+diff --git a/drivers/net/ethernet/xilinx/xilinx_emacps.c b/drivers/net/ethernet/xilinx/xilinx_emacps.c
+index 683b20b..92b1a2c 100644
+--- a/drivers/net/ethernet/xilinx/xilinx_emacps.c
++++ b/drivers/net/ethernet/xilinx/xilinx_emacps.c
+@@ -1835,7 +1835,7 @@ static int xemacps_open(struct net_device *ndev)
+ {
+ 	struct net_local *lp = netdev_priv(ndev);
+ 	int rc;
+-
++	int reg;
+ 	dev_dbg(&lp->pdev->dev, "open\n");
+ 	if (!is_valid_ether_addr(ndev->dev_addr))
+ 		return  -EADDRNOTAVAIL;
+@@ -1852,7 +1852,12 @@ static int xemacps_open(struct net_device *ndev)
+ 		dev_err(&lp->pdev->dev, "pm_runtime_get() failed, rc %d\n", rc);
+ 		goto err_free_rings;
+ 	}
+-
++	reg = xemacps_read(lp->baseaddr, XEMACPS_MODID_OFFSET);
++	while(reg == 0){
++	  printk("Waiting for xemacps to be ready\n");
++	  udelay(1);
++	  reg = xemacps_read(lp->baseaddr, XEMACPS_MODID_OFFSET);
++	}
+ 	xemacps_init_hw(lp);
+ 	napi_enable(&lp->napi);
+ 	rc = xemacps_mii_probe(ndev);
